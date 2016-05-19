@@ -16,9 +16,9 @@ var projects =[{
 
   "title": "Machine Learning Nano Degree",
   "dates":"2015.06- Present",
-  "picture":"images/project.jpg",
+  "picture":["images/project.jpg","images/project.jpg"],
   "description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-  
+
      }]
 
      //var HTMLprojectImage = '<img src="%data%">';
@@ -79,7 +79,7 @@ if (bio.length !== 0){
         });
 
     formattedSkills =  formattedSkills;
-    console.log(formattedSkills);
+
 
     //$("#header").append(formattedSkills);
 
@@ -108,7 +108,6 @@ if (bio.length !== 0){
     }// contacts loop
 
 
-
 }// if bio statement
 
 if (work.length !== 0){
@@ -116,23 +115,38 @@ if (work.length !== 0){
     work.forEach(function(val){
 
        for (key in val){
+
             var formattedWork ="";
 
             if (key == "employer"){
+
                 var formatttedEmployer = HTMLworkEmployer.replace("%data%",val["employer"]);
+
                 continue;
+
             }else if (key === "title"){
+
                var formattedTitle = HTMLworkTitle.replace("%data%",val["title"]);
+
                 continue;
+
             }else if (key==="dates"){
+
             var formattedDates = HTMLworkDates.replace("%data%",val["dates"]);
+
              continue;
+
             }else if (key =="location") {
+
               var formatedLocation = HTMLworkLocation.replace("%data%",val["location"]);
+
                continue;
+
             }else if(key =="description") {
+
             var formattedDescription = HTMLworkDescription.replace("%data%", val.description);
              continue;
+
             }
 
        }// for loop
@@ -177,10 +191,14 @@ if (projects.length !==0){
 
             }else if (key === "picture"){
 
-              var formattedProjectPic = HTMLprojectImage.replace("%data%",project.picture);
+              var formattedProjectPic ="";
+
+               project.picture.forEach(function(picUrl){
+
+                        formattedProjectPic = formattedProjectPic.concat(HTMLprojectImage.replace("%data%",picUrl));
+               });
+
               continue;
-
-
 
             }
             //var HTMLprojectImage = '<img src="%data%">';
