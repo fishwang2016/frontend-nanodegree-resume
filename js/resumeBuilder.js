@@ -6,13 +6,57 @@ var bio ={
   "name": "Fish Wang",
   "role": "Web Developer",
   "welcomeMessage":"Hi there, how are you doing today?",
-  "contacts": {"Tel":"123112313" , "Email":"asdfdsa@ads.com" ,"Location":"Guangzhou,Guangdong","github":"fishwang2016"},
+  "contacts": {"tel":"123112313" , "email":"asdfdsa@ads.com" ,"location":"Dongguan,Guangdong","github":"fishwang2016"},
   "skills":["Excel","SolidWorks","Javascript","Python","Machine Learning","Front End Development"],
   "biopic": "images/fry.jpg",
 
-  "display": "function with no parameters"//function taking no parameters
+   display:function(){
+
+        var formattedInfo = ""
+
+        console.log("Hello, how are you doing today?");
+        var formattedName = HTMLheaderName.replace("%data%",bio.name);
+        var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
+
+        var contacts = bio.contacts;
+        console.log(contacts);
+        var formattedContact = ""
+
+        for (contact in contacts){
+
+          // console.log(contacts[contact]);// why contacts.contact output underfine?
+
+          formattedContact = formattedContact + HTMLcontactGeneric.replace("%contact%", contact) ;
+          formattedContact = formattedContact.replace("%data%",contacts[contact]);
+
+        };
+        
+        var formattedImg = HTMLbioPic.replace("%data%",bio.biopic);
+        var formattedMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
+
+        formattedInfo = formattedName + formattedRole + formattedImg +formattedMsg + HTMLskillsStart;
+
+        $("#header").append(formattedInfo);
+        $("#topContacts").append(formattedContact);
+        $("#footerContacts").append(formattedContact);
+
+        var formattedSkill ="";
+
+        bio.skills.forEach(function(skill){
+
+           formattedSkill = formattedSkill + HTMLskills.replace("%data%",skill);
+
+        });
+
+
+        $("#skills").append(formattedSkill);
+
+
+  }//function taking no parameters
 
 };
+
+ bio.display();
 
 
 var education ={
@@ -77,227 +121,5 @@ var projects ={
 
 
 
-
-// bio
-if (bio.length !== 0){
-
-    var formattedName = HTMLheaderName.replace("%data%", bio["name"]);
-
-    var formattedRole = HTMLheaderRole.replace("%data%", bio["role"]);
-
-    var formattedPic= HTMLbioPic.replace("%data%",bio.biopic);
-
-    var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
-
-    var formattedSkills ="";
-
-    bio["skills"].forEach(function(skill){
-
-           formattedSkills = formattedSkills.concat(HTMLskills.replace("%data%",skill)) ;
-
-
-        });
-
-    formattedSkills =  formattedSkills;
-
-     var formattedBio = formattedName + formattedRole + formattedPic +formattedWelcomeMsg ;
-
-    $("#header").append(formattedBio);
-    $("#header").append(HTMLskillsStart);
-    $("#skills").append(formattedSkills);
-
-
-  //work on contacts
-
-    contacts = bio["contacts"];
-
-    for (var key in contacts){
-
-      if (contacts.hasOwnProperty(key)){
-
-        var formattedContact = HTMLcontactGeneric.replace("%contact%",key);
-        formattedContact = formattedContact.replace("%data%", contacts[key]);
-
-        $("#topContacts").append(formattedContact);
-        $("#footerContacts").append(formattedContact);
-      }
-    }// contacts loop
-
-
-}// if bio statement
-
-if (work.length !== 0){
-
-    work.forEach(function(val){
-
-       for (key in val){
-
-            var formattedWork ="";
-
-            if (key == "employer"){
-
-                var formatttedEmployer = HTMLworkEmployer.replace("%data%",val["employer"]);
-
-                continue;
-
-            }else if (key === "title"){
-
-               var formattedTitle = HTMLworkTitle.replace("%data%",val["title"]);
-
-                continue;
-
-            }else if (key==="dates"){
-
-            var formattedDates = HTMLworkDates.replace("%data%",val["dates"]);
-
-             continue;
-
-            }else if (key =="location") {
-
-              var formatedLocation = HTMLworkLocation.replace("%data%",val["location"]);
-
-               continue;
-
-            }else if(key =="description") {
-
-            var formattedDescription = HTMLworkDescription.replace("%data%", val.description);
-             continue;
-
-            }
-
-       }// for loop
-
-    formattedWork = HTMLworkStart+formatttedEmployer+formattedTitle+formattedDates+formatedLocation +formattedDescription;
-
-    $("#workExperience").children().append(formattedWork);
-
-    })// forEach loop
-
-}// end of work
-
-
-
-// project
-
-if (projects.length !==0){
-
-    projects.forEach(function(project){
-
-        var formattedProject =""
-
-        for (key in project) {
-
-            if (key ==="title"){
-
-                 var formattedTitle = HTMLprojectTitle.replace("%data%",project.title);
-                 continue;
-
-
-            }else if(key ==="dates") {
-
-                 var formattedDates = HTMLprojectDates.replace("%data%",project.dates);
-                 continue;
-
-
-            }else if(key === "description") {
-
-                 var formattedDescription = HTMLprojectDescription.replace("%data%",project.description);
-                 continue;
-
-
-            }else if (key === "picture"){
-
-              var formattedProjectPic ="";
-
-               project.picture.forEach(function(picUrl){
-
-                        formattedProjectPic = formattedProjectPic.concat(HTMLprojectImage.replace("%data%",picUrl));
-               });
-
-              continue;
-
-            }
-
-
-        }// end for loop
-
-       formattedProject = HTMLprojectStart + formattedTitle +formattedDates + formattedDescription+formattedProjectPic;
-
-       $("#projects").children().append(formattedProject);
-
-    }) // end forEach
-
-};
-
-
-// education
-
-if (education !== 0){
-
-    var schools = education.schools;
-
-    if (schools.length !==0){
-        schools.forEach(function(val){
-            var formattedSchool = "";
-            for (key in val){
-                if (key === "name"){
-                  var formattedSchoolName = HTMLschoolName.replace("%data%",val.name);
-                  continue;
-                } else if (key === "degree"){
-                  var formattedSchoolDegree = HTMLschoolDegree.replace("%data%",val.degree);
-                  continue;
-                } else if (key === "dates"){
-                  var formattedSchoolDates = HTMLschoolDates.replace("%data%",val.dates);
-                  continue;
-                } else if (key === "location"){
-                 var formattedSchoolLocation = HTMLschoolLocation.replace("%data%",val[key]);
-                 continue;
-                } else if (key === "major") {
-                 var formattedSchoolMajor = HTMLschoolMajor.replace("%data%",val[key]);
-                }
-             };// end for loop
-         formattedSchool = HTMLschoolStart + formattedSchoolName+
-                        formattedSchoolDegree+formattedSchoolDates+
-                        formattedSchoolLocation +formattedSchoolMajor;
-
-         $("#education").children().append(formattedSchool);
-
-       }); //end forEach
-    } // end of schools
-
-
-
-    onlineCourses = education.onlineCourses;
-    if (onlineCourses.length !== 0){
-
-      onlineCourses.forEach(function(val){
-            var formattedOnline = "";
-            for (key in val){
-                if (key === "title"){
-                  var formattedOnlineTitle = HTMLonlineTitle.replace("%data%",val[key]);
-                  continue;
-                } else if (key === "school"){
-                  var formattedOnlineSchool = HTMLonlineSchool.replace("%data%",val[key]);
-                  continue;
-                } else if (key === "dates"){
-                  var formattedOnlineDates = HTMLonlineDates.replace("%data%",val[key]);
-                  continue;
-                } else if (key === "courseURL"){
-                 var formattedOnlineURL = HTMLonlineURL.replace("%data%",val[key]);
-                 continue;
-                }
-             };// end for loop
-         formattedOnline = HTMLonlineClasses + formattedOnlineTitle+
-                        formattedOnlineSchool+formattedOnlineDates+
-                        formattedOnlineURL;
-
-         $("#education").children().append(formattedOnline);
-
-       }); //end forEach
-    } // end of schools
-
-} // if education.length !===0
-
-
-$("#mapDiv").append(googleMap);
+// $("#mapDiv").append(googleMap);
 
