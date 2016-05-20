@@ -18,7 +18,7 @@ var bio ={
         var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
 
         var contacts = bio.contacts;
-    
+
         var formattedContact = ""
 
         for (contact in contacts){
@@ -29,7 +29,7 @@ var bio ={
           formattedContact = formattedContact.replace("%data%",contacts[contact]);
 
         };
-        
+
         var formattedImg = HTMLbioPic.replace("%data%",bio.biopic);
         var formattedMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 
@@ -93,7 +93,7 @@ var education ={
       schools.forEach(function(school){
           var formattedSchool = "";
           console.log(formattedSchool);
-      
+
           for (key in school){
 
                 if (key === "name" ){
@@ -112,7 +112,7 @@ var education ={
                   var majors = school["majors"].join();
                   var formattedMajors = HTMLschoolMajor.replace("%data%",majors);
                 }
-            
+
              }//for loop
 
         formattedSchool = HTMLschoolStart + formattedName + formatteDegree+
@@ -121,39 +121,59 @@ var education ={
         formattedSchools = formattedSchools + formattedSchool;
 
       });// forEach loop
-      $("#education").children().append(formattedSchools)
+    
 
     };// if  schools length !== 0
 
     if (education["onlineCourses"].length !== 0){
             console.log("online");
-            var HTMLonlineClasses = '<h3>Online Classes</h3>';
-            var HTMLonlineTitle = '<a href="#">%data%';
-            var HTMLonlineSchool = ' - %data%</a>';
-            var HTMLonlineDates = '<div class="date-text">%data%</div>';
-            var HTMLonlineURL = '<br><a href="#">%data%</a>';
-  //            "onlineCourses":[{
 
-  //   "title":"Machine Learning",
-  //   "school":"Georgia Institute of Technology",
-  //   "date":"2015 - 2016",
-  //   "url":"http://www.udacity.com"
+           var onlineCourses  = education["onlineCourses"];
+           console.log(onlineCourses);
+           var formattedonlineCourses =HTMLonlineClasses;
 
-  // }]
+           onlineCourses.forEach(function(onlineCourse){
+                 var formattedonlineCourse = HTMLonlineClasses;
 
-           var onlineCorses  = education["onelineCourses"];
-           console.log(onlineCourses)
+                  for (key in  onlineCourse){
+                       if (key === "title"){
+
+                        var formattedTitle = HTMLonlineTitle.replace("%data%", onlineCourse[key]);
+                             continue;
+
+                       }else if(key ==="school") {
+                        var formattedSchool = HTMLonlineSchool.replace("%data%", onlineCourse[key]);
+                             continue;
+
+                       }else if (key ==="date"){
+
+                        var formattedDate = HTMLonlineDates.replace("%data%", onlineCourse[key]);
+                             continue;
+                       }else if (key ==="url"){
+
+                        var formattedURL = HTMLonlineURL.replace("%data%", onlineCourse[key]);
+                        continue;
+                       }
+
+                  };// for loop
 
 
+                  formattedonlineCourse = formattedTitle + formattedSchool + formattedDate +formattedURL
+
+                  formattedonlineCourses = formattedonlineCourses + formattedonlineCourse
+
+
+           });// forEach 
+
+        $("#education").children().append(formattedSchools+formattedonlineCourses)
 
 
     };//onlineCourses
 
-    
 
    }// function taking no parameters;
 
-   
+
 }; // education
 
 
@@ -183,19 +203,19 @@ var work = {
 
     display: function(){
 
-      var jobs = work["jobs"]; 
+      var jobs = work["jobs"];
 
       var formattedWork = "";
 
       jobs.forEach(function(job){
-       
+
         var formattedJob = "";
 
         for (key in job){
               if (key === "employer"){
                 var formattedEmployer = HTMLworkEmployer.replace("%data%",job[key]);
                 continue;
-               
+
               }else if (key ==="title"){
                 var formattedTitle = HTMLworkTitle.replace("%data%",job[key]);
                 continue;
@@ -214,7 +234,7 @@ var work = {
               }
 
             } // for loop
-       
+
         formattedJob = HTMLworkStart + formattedEmployer + formattedTitle+
 
                           formattedLocation + formattedDates + formattedDescription;
@@ -261,7 +281,7 @@ var projects ={
       var allProjects = projects["projects"];
       var formattedProjects = "";
       allProjects.forEach(function(project){
-            
+
             var formattedProject = "";
             for (key in project){
 
@@ -295,5 +315,5 @@ projects.display()
 
 
 
-// $("#mapDiv").append(googleMap);
+$("#mapDiv").append(googleMap);
 
