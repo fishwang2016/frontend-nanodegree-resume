@@ -155,6 +155,11 @@ var work = {
 
 work.display();
 
+var HTMLprojectStart = '<div class="project-entry"></div>';
+var HTMLprojectTitle = '<a href="#">%data%</a>';
+var HTMLprojectDates = '<div class="date-text">%data%</div>';
+var HTMLprojectDescription = '<p><br>%data%</p>';
+var HTMLprojectImage = '<img src="%data%">';
 
 var projects ={
 
@@ -163,15 +168,56 @@ var projects ={
         "title": "Machine Learning Nano Degree",
         "dates":"2015.06- Present",
         "picture":["images/project.jpg","images/project.jpg"],
-        "description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+        "description":"Sed ut perspriam, eaque ipsa quae ab illosjasdf asdkflsajf aejrfuewfsadjfkjastjklr etjrekaj asfsafsdfjsad sdafk s rlkktrewk asfjsd fsdf"+
+                      " necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente"
+     },
+       {
 
-     }],
+        "title": "Front End Nano Degree",
+        "dates":"2015.06- Present",
+        "picture":["images/project.jpg","images/project.jpg"],
+        "description":"Sed ut perspriam, eaque ipsa quae ab illosjasdf asdkflsajf aejrfuewfsadjfkjastjklr etjrekaj asfsafsdfjsad sdafk s rlkktrewk asfjsd fsdf"+
+                      " necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente"
+     }
+     ],
+
 
      display: function(){
-      console.log("this is project ");
-     }
 
-   };
+      var allProjects = projects["projects"];
+      var formattedProjects = "";
+      allProjects.forEach(function(project){
+            
+            var formattedProject = "";
+            for (key in project){
+
+               if (key === "title"){
+                   var formattedTitle = HTMLprojectTitle.replace("%data%",project[key]);
+
+               }else if (key ==="dates"){
+                   var formattedDates = HTMLprojectDates.replace("%data%",project[key]);
+
+               }else if (key === "picture"){
+                    var pictures = project[key];
+                    var formattedPic = ""
+                    pictures.forEach(function(pic){
+                           formattedPic = formattedPic + HTMLprojectImage.replace("%data%",pic);
+                    });// added pictures
+
+               }else if (key ==="description"){
+                    var formattedDesc = HTMLprojectDescription.replace("%data%",project[key]);
+               }
+            }// for loop
+
+           formattedProject = HTMLprojectStart+ formattedTitle+ formattedDates+formattedDesc+formattedPic;
+        formattedProjects = formattedProjects + formattedProject;
+      });//forEach
+      $("#projects").children().append(formattedProjects);
+     } //display function
+
+   };// projects object
+
+projects.display()
 
 
 
