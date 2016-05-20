@@ -120,18 +120,23 @@ var work = {
         for (key in job){
               if (key === "employer"){
                 var formattedEmployer = HTMLworkEmployer.replace("%data%",job[key]);
+                continue;
                
               }else if (key ==="title"){
                 var formattedTitle = HTMLworkTitle.replace("%data%",job[key]);
+                continue;
 
               }else if (key ==="location"){
                 var formattedLocation = HTMLworkLocation.replace("%data%",job[key]);
+                continue;
 
               }else if (key === "dates"){
                 var formattedDates = HTMLworkDates.replace("%data%",job[key]);
+                continue;
 
               }else if (key === "description"){
                 var formattedDescription = HTMLworkDescription.replace("%data%",job[key]);
+                continue;
               }
 
             } // for loop
