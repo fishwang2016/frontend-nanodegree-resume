@@ -14,12 +14,11 @@ var bio ={
 
         var formattedInfo = ""
 
-        console.log("Hello, how are you doing today?");
         var formattedName = HTMLheaderName.replace("%data%",bio.name);
         var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
 
         var contacts = bio.contacts;
-        console.log(contacts);
+    
         var formattedContact = ""
 
         for (contact in contacts){
@@ -48,16 +47,13 @@ var bio ={
 
         });
 
-
         $("#skills").append(formattedSkill);
-
 
   }//function taking no parameters
 
-};
+}; // bio object
 
  bio.display();
-
 
 var education ={
 
@@ -80,28 +76,79 @@ var education ={
 
   }],
 
-   "display": "function with no parameters"// function taking no parameters;
+   display:function(){
+
+   }// function taking no parameters;
 
 
 }; // education
 
+education.display();
 
 
 var work = {
 
   "jobs":[
            {
-            "employer":"Jabil",
+            "employer":"Tenseent",
             "title":"Engineer",
             "location":"Guangzhou, Guangdong Province, CHINA",
-            "dates":"2007-2009",
+            "dates":"2009-2012",
             "description":"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+            }
+            ,
+            {"employer":"Jabil",
+            "title":"Engineer",
+            "location":"Shen Zhen, Guangdong Province, CHINA",
+            "dates":"2007-2009",
+            "description":"wer areos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quo"+
+                            "s et accusamus et iusto odio dignissimos ducimus qui blanditiis prae"
+
             }
     ],
 
-    "display": "function with no parameters"
+    display: function(){
 
-  };
+      var jobs = work["jobs"]; 
+
+      var formattedWork = "";
+
+      jobs.forEach(function(job){
+       
+        var formattedJob = "";
+
+        for (key in job){
+              if (key === "employer"){
+                var formattedEmployer = HTMLworkEmployer.replace("%data%",job[key]);
+               
+              }else if (key ==="title"){
+                var formattedTitle = HTMLworkTitle.replace("%data%",job[key]);
+
+              }else if (key ==="location"){
+                var formattedLocation = HTMLworkLocation.replace("%data%",job[key]);
+
+              }else if (key === "dates"){
+                var formattedDates = HTMLworkDates.replace("%data%",job[key]);
+
+              }else if (key === "description"){
+                var formattedDescription = HTMLworkDescription.replace("%data%",job[key]);
+              }
+
+            } // for loop
+       
+        formattedJob = HTMLworkStart + formattedEmployer + formattedTitle+
+
+                          formattedLocation + formattedDates + formattedDescription;
+
+        formattedWork =formattedWork +formattedJob;
+      });//forEach job
+
+      $("#workExperience").children().append(formattedWork);
+    }
+
+  };// work object
+
+work.display();
 
 
 var projects ={
@@ -115,7 +162,9 @@ var projects ={
 
      }],
 
-     "display": "function with no parameters"
+     display: function(){
+      console.log("this is project ");
+     }
 
    };
 
