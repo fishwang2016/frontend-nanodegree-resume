@@ -63,6 +63,13 @@ var education ={
           "degree": "Bachelor",
           "majors": ["Mechanical Engineering","Art","CS"],
           "dates":"2003.09 - 2007.07",
+          "schoolURL":"www.gdut.edu.cn"},
+          {
+          "name":"Guangdong University of Foreign Studies",
+          "location":"Guangzhou, Guangdong Province, CHINA",
+          "degree": "Bachelor",
+          "majors": ["Mechanical Engineering","Art","CS"],
+          "dates":"2003.09 - 2007.07",
           "schoolURL":"www.gdut.edu.cn"
   }],
 
@@ -78,10 +85,65 @@ var education ={
 
    display:function(){
 
+    if (education["schools"].length !== 0){
+      var HTMLschoolStart = '<div class="education-entry"></div>';
+      var HTMLschoolName = '<a href="#">%data%';
+      var HTMLschoolDegree = ' -- %data%</a>';
+      var HTMLschoolDates = '<div class="date-text">%data%</div>';
+      var HTMLschoolLocation = '<div class="location-text">%data%</div>';
+      var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+
+      var schools = education["schools"];
+      var formattedSchools =""
+
+
+      schools.forEach(function(school){
+          var formattedSchool = "";
+          console.log(formattedSchool);
+      
+          for (key in school){
+
+                if (key === "name" ){
+                  var formattedName = HTMLschoolName.replace("%data%", school[key]);
+
+                }else if (key === "degree") {
+                  var formatteDegree = HTMLschoolDegree.replace("%data%", school[key]);
+
+                }else if  (key === "dates"){
+                  var formattedDates = HTMLschoolDates.replace("%data%", school[key]);
+
+                }else if (key === "location") {
+                  var formattedLocation = HTMLschoolLocation.replace("%data%", school[key])
+
+                }else if (key === "majors"){
+                  var majors = school["majors"].join();
+                  var formattedMajors = HTMLschoolMajor.replace("%data%",majors);
+                }
+            
+             }//for loop
+
+        formattedSchool = HTMLschoolStart + formattedName + formatteDegree+
+                              formattedDates + formattedLocation + formattedMajors;
+
+        formattedSchools = formattedSchools + formattedSchool;
+
+      });// forEach loop
+      $("#education").children().append(formattedSchools)
+
+    };// if  schools length !== 0
+
+    if (education["onlineCourses"].length !== 0){
+            console.log("online");
+
+    };//onlineCourses
+
+    
+
    }// function taking no parameters;
 
-
+   
 }; // education
+
 
 education.display();
 
