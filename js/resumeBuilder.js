@@ -86,13 +86,6 @@ var education ={
    display:function(){
 
     if (education["schools"].length !== 0){
-      var HTMLschoolStart = '<div class="education-entry"></div>';
-      var HTMLschoolName = '<a href="#">%data%';
-      var HTMLschoolDegree = ' -- %data%</a>';
-      var HTMLschoolDates = '<div class="date-text">%data%</div>';
-      var HTMLschoolLocation = '<div class="location-text">%data%</div>';
-      var HTMLschoolMajor = '<em><br>Major: %data%</em>';
-
       var schools = education["schools"];
       var formattedSchools =""
 
@@ -134,6 +127,25 @@ var education ={
 
     if (education["onlineCourses"].length !== 0){
             console.log("online");
+            var HTMLonlineClasses = '<h3>Online Classes</h3>';
+            var HTMLonlineTitle = '<a href="#">%data%';
+            var HTMLonlineSchool = ' - %data%</a>';
+            var HTMLonlineDates = '<div class="date-text">%data%</div>';
+            var HTMLonlineURL = '<br><a href="#">%data%</a>';
+  //            "onlineCourses":[{
+
+  //   "title":"Machine Learning",
+  //   "school":"Georgia Institute of Technology",
+  //   "date":"2015 - 2016",
+  //   "url":"http://www.udacity.com"
+
+  // }]
+
+           var onlineCorses  = education["onelineCourses"];
+           console.log(onlineCourses)
+
+
+
 
     };//onlineCourses
 
