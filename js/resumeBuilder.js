@@ -79,9 +79,17 @@ var education ={
     "title":"Machine Learning",
     "school":"Georgia Institute of Technology",
     "date":"2015 - 2016",
+    "url":"http://www.udacity.com"},
+    {
+
+    "title":"Front End Learning",
+    "school":"Georgia Institute of Technology",
+    "date":"2015 - 2016",
     "url":"http://www.udacity.com"
 
-  }],
+  }
+
+  ],
 
    display:function(){
 
@@ -91,8 +99,8 @@ var education ={
 
 
       schools.forEach(function(school){
+
           var formattedSchool = "";
-          console.log(formattedSchool);
 
           for (key in school){
 
@@ -126,10 +134,9 @@ var education ={
     };// if  schools length !== 0
 
     if (education["onlineCourses"].length !== 0){
-            console.log("online");
+      
+          var onlineCourses  = education["onlineCourses"];
 
-           var onlineCourses  = education["onlineCourses"];
-           console.log(onlineCourses);
            var formattedonlineCourses =HTMLonlineClasses;
 
            onlineCourses.forEach(function(onlineCourse){
@@ -312,8 +319,6 @@ var projects ={
    };// projects object
 
 projects.display()
-
-
 
 $("#mapDiv").append(googleMap);
 
