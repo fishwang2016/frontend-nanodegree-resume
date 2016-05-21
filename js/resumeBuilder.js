@@ -95,7 +95,7 @@ var education ={
 
     if (education["schools"].length !== 0){
       var schools = education["schools"];
-      var formattedSchools =""
+      var formattedSchools ="";
 
 
       schools.forEach(function(school){
@@ -123,18 +123,17 @@ var education ={
 
              }//for loop
 
-        formattedSchool = HTMLschoolStart + formattedName + formatteDegree+
+        formattedSchool =   formattedName + formatteDegree+
                               formattedDates + formattedLocation + formattedMajors;
 
         formattedSchools = formattedSchools + formattedSchool;
 
       });// forEach loop
-    
 
     };// if  schools length !== 0
 
     if (education["onlineCourses"].length !== 0){
-      
+
           var onlineCourses  = education["onlineCourses"];
 
            var formattedonlineCourses =HTMLonlineClasses;
@@ -170,9 +169,11 @@ var education ={
                   formattedonlineCourses = formattedonlineCourses + formattedonlineCourse
 
 
-           });// forEach 
+           });// forEach
 
-        $("#education").append(formattedSchools+formattedonlineCourses)
+        $("#education").append(HTMLschoolStart);
+
+        $(".education-entry").append(formattedSchools+formattedonlineCourses)
 
 
     };//onlineCourses
