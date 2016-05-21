@@ -1,0 +1,39 @@
+
+/*above*/
+
+/*This is a custom css file for the project*/
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-color: #4A4A4A;
+}
+
+p {
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: normal;
+}
+
+em {
+    color: #999;
+}
+
+.biopic {
+    width: 200px;
+    border-radius: 50%;
+}
+
+.education-entry h3 {
+    margin-top: 20px;
+    padding-left: 0px;
+    color: #999;
+}
+
+.onlineclass {
+    margin-bottom: 30px;
+}
+
+.onlineclass a {
+    margin-top: 0;
+}

@@ -137,14 +137,15 @@ var education ={
 
              }//for loop
 
-        formattedSchool = HTMLschoolStart + formattedName + formatteDegree+
+        formattedSchool =  formattedName + formatteDegree+
                               formattedDates + formattedLocation + formattedMajors;
 
         formattedSchools = formattedSchools + formattedSchool;
 
       });// forEach loop
 
-     $("#education").children().append(formattedSchools);
+     $("#education").append(HTMLschoolStart);
+     $(".education-entry").append(formattedSchools);
 
 
     }// if  schools length !== 0
@@ -185,14 +186,16 @@ var education ={
                   }// for loop
 
 
-                  formattedonlineCourse = formattedTitle + formattedSchool + formattedDate +formattedURL;
+                  formattedonlineCourse =  "<div class='onlineclass'>"+formattedTitle + formattedSchool + formattedDate +
+                                          formattedURL+"</div>";
+                  console.log(formattedonlineCourse);
 
                   formattedonlineCourses = formattedonlineCourses + formattedonlineCourse;
 
 
            });// forEach
 
-        $("#education").children().append(formattedonlineCourses);
+        $(".education-entry").append(formattedonlineCourses);
 
 
     }//onlineCourses
