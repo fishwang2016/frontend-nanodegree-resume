@@ -1,0 +1,22 @@
+/*This is a custom css file for the project*/
+
+*{
+  font-family: Arial, "Times New Roman";
+  font-size: 20px;
+  font-color:#4A4A4A;
+
+}
+
+p{
+	font-size: 20px;
+	font-family: Arial;
+	font-weight: normal;
+
+
+}
+
+.biopic{
+
+	width:200px;
+	border-radius:50%;
+}

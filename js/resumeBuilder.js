@@ -172,7 +172,7 @@ var education ={
 
            });// forEach 
 
-        $("#education").children().append(formattedSchools+formattedonlineCourses)
+        $("#education").append(formattedSchools+formattedonlineCourses)
 
 
     };//onlineCourses
