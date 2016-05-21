@@ -6,7 +6,7 @@ var bio ={
   "name": "Fish Wang",
   "role": "Web Developer",
   "welcomeMessage":"Hi there, how are you doing today?",
-  "contacts": {"tel":"123112313" , "email":"asdfdsa@ads.com" ,"location":"Dongguan,Guangdong","github":"fishwang2016"},
+  "contacts": {"mobile":"123112313" , "email":"asdfdsa@ads.com" ,"location":"Dongguan,Guangdong","github":"fishwang2016"},
   "skills":["Excel","SolidWorks","Javascript","Python","Machine Learning","Front End Development"],
   "biopic": "images/fry.jpg",
 
@@ -35,11 +35,9 @@ var bio ={
 
             }
 
-
-
         }
 
-      
+
         var formattedImg = HTMLbioPic.replace("%data%",bio.biopic);
         var formattedMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 
@@ -80,7 +78,7 @@ var education ={
           "degree": "Bachelor",
           "majors": ["Mechanical Engineering","Art","CS"],
           "dates":"2003.09 - 2007.07",
-          "schoolURL":"www.gdut.edu.cn"
+          "url":"www.gdut.edu.cn"
   }],
 
 
@@ -147,12 +145,12 @@ var education ={
       });// forEach loop
 
      $("#education").children().append(formattedSchools);
-    
+
 
     }// if  schools length !== 0
 
     if (education.onlineCourses.length !== 0){
-      
+
           var onlineCourses  = education.onlineCourses;
 
            var formattedonlineCourses =HTMLonlineClasses;
@@ -192,7 +190,7 @@ var education ={
                   formattedonlineCourses = formattedonlineCourses + formattedonlineCourse;
 
 
-           });// forEach 
+           });// forEach
 
         $("#education").children().append(formattedonlineCourses);
 
@@ -217,9 +215,17 @@ var work = {
             "title":"Engineer",
             "location":"Guangzhou, Guangdong Province, CHINA",
             "dates":"2009-2012",
-            "description":"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+            "description":"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium"+
+                          " voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati"+
+                          " cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est"+
+                          " laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, "+
+                          "cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, "+
+                          "omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut "+
+                          "rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque "+
+                          "earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus "+
+                              "maiores alias consequatur aut perferendis doloribus asperiores repellat."
             },
-            
+
             {"employer":"Jabil",
             "title":"Engineer",
             "location":"Shen Zhen, Guangdong Province, CHINA",
@@ -295,17 +301,21 @@ var projects ={
 
         "title": "Machine Learning Nano Degree",
         "dates":"2015.06- Present",
-        "picture":["images/project.jpg","images/project.jpg"],
-        "description":"Sed ut perspriam, eaque ipsa quae ab illosjasdf asdkflsajf aejrfuewfsadjfkjastjklr etjrekaj asfsafsdfjsad sdafk s rlkktrewk asfjsd fsdf"+
-                      " necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente"
+        "images":["images/project.jpg","images/project.jpg"],
+        "description":"Sed ut perspriam, eaque ipsa quae ab illosjasdf asdkflsajf aejrfuewfsadj"+
+                      "fkjastjklr etjrekaj asfsafsdfjsad sdafk s rlkktrewk asfjsd fsdf"+
+                      " necessitatibus saepe eveniet ut et voluptates repudiandae sint et "+
+                      "molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente"
      },
        {
 
         "title": "Front End Nano Degree",
         "dates":"2015.06- Present",
         "picture":["images/project.jpg","images/project.jpg"],
-        "description":"Sed ut perspriam, eaque ipsa quae ab illosjasdf asdkflsajf aejrfuewfsadjfkjastjklr etjrekaj asfsafsdfjsad sdafk s rlkktrewk asfjsd fsdf"+
-                      " necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente"
+        "description":"Sed ut perspriam, eaque ipsa quae ab illosjasdf asdkflsajf "+
+                      "aejrfuewfsadjfkjastjklr etjrekaj asfsafsdfjsad sdafk s rlkktrewk asfjsd fsdf"+
+                      " necessitatibus saepe eveniet ut et voluptates repudiandae sint"+
+                      " et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente"
      }
      ],
 
@@ -330,9 +340,9 @@ var projects ={
                }else if (key ==="dates"){
                     formattedDates = HTMLprojectDates.replace("%data%",project[key]);
 
-               }else if (key === "picture"){
+               }else if (key === "images"){
                     pictures = project[key];
-                   
+
                     pictures.forEach(function(pic){
                            formattedPic = formattedPic + HTMLprojectImage.replace("%data%",pic);
                     });// added pictures
